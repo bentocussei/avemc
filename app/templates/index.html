@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}EduBot - Educação Moral e Cívica{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Seção Hero -->
+    <div class="row align-items-center min-vh-75 py-5">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-4">Aprenda Educação Moral e Cívica de forma interativa</h1>
+            <p class="lead mb-4">
+                Um assistente virtual inteligente para ajudar você a compreender valores, cidadania e ética de maneira simples e engajadora.
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="{{ url_for('main.login') }}" class="btn btn-primary btn-lg px-4 me-md-2">Começar Agora</a>
+                <a href="{{ url_for('main.about') }}" class="btn btn-outline-secondary btn-lg px-4">Saiba Mais</a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center">
+            <img src="{{ url_for('static', filename='img/chat-bot.png') }}" alt="Chatbot Educacional" class="img-fluid" style="max-width: 400px;">
+        </div>
+    </div>
+
+    <!-- Seção de Recursos -->
+    <div class="row g-4 py-5" id="recursos">
+        <h2 class="text-center mb-5">Por que usar nosso Chatbot?</h2>
+        
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="feature-icon bg-primary bg-gradient text-white rounded-circle mb-3 mx-auto" style="width: 50px; height: 50px; line-height: 50px;">
+                        <i class="bi bi-chat-dots"></i>
+                    </div>
+                    <h3 class="fs-5">Aprendizado Interativo</h3>
+                    <p class="text-muted">Dialogue e aprenda através de conversas naturais e envolventes</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="feature-icon bg-primary bg-gradient text-white rounded-circle mb-3 mx-auto" style="width: 50px; height: 50px; line-height: 50px;">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <h3 class="fs-5">Conteúdo Confiável</h3>
+                    <p class="text-muted">Material educacional baseado em fontes seguras e atualizadas</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="feature-icon bg-primary bg-gradient text-white rounded-circle mb-3 mx-auto" style="width: 50px; height: 50px; line-height: 50px;">
+                        <i class="bi bi-graph-up"></i>
+                    </div>
+                    <h3 class="fs-5">Progresso Contínuo</h3>
+                    <p class="text-muted">Acompanhe seu desenvolvimento e evolua constantemente</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção CTA -->
+    <div class="row py-5">
+        <div class="col-12 text-center">
+            <div class="p-5 mb-4 cta-section">
+                <h2 class="display-6 fw-bold mb-3">Pronto para começar sua jornada?</h2>
+                <p class="fs-5 text-muted mb-4">Junte-se a milhares de estudantes que já estão aprendendo com nosso chatbot.</p>
+                <a href="{{ url_for('main.login') }}" class="btn btn-primary btn-lg px-5">Começar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

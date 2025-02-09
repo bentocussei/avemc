@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}AVEMC - Chat Educacional{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <!-- Área do Chat -->
+            <div class="card border-0 shadow-sm">
+                <!-- Cabeçalho do Chat -->
+                <div class="card-header bg-primary text-white py-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="chat-avatar bg-white text-primary rounded-circle d-flex align-items-center justify-content-center me-3">
+                                <i class="bi bi-robot fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Assistente AVEMC</h5>
+                                <small>Educação Moral e Cívica</small>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="{{ url_for('main.logout') }}" class="btn btn-light btn-sm">
+                                <i class="bi bi-box-arrow-right"></i> Sair
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Área de Mensagens -->
+                <div class="card-body chat-messages p-4" id="chat-messages">
+                    <!-- Mensagem de Boas-vindas do Bot -->
+                    <div class="message bot-message mb-3">
+                        <div class="message-content">
+                            <p class="mb-0">Olá! Sou o assistente AVEMC. Como posso ajudar você hoje com questões sobre Educação Moral e Cívica?</p>
+                        </div>
+                    </div>
+                    
+                    <!-- As mensagens serão inseridas aqui dinamicamente via JavaScript -->
+                </div>
+
+                <!-- Área de Input -->
+                <div class="card-footer border-0 p-3">
+                    <form id="chat-form" class="chat-input-form">
+                        <div class="input-group">
+                            <input type="text" 
+                                   id="user-input" 
+                                   class="form-control border-2" 
+                                   placeholder="Digite sua pergunta aqui..."
+                                   autocomplete="off">
+                            <button class="btn btn-primary px-4" type="submit">
+                                <i class="bi bi-send-fill"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sugestões de Perguntas -->
+            <div class="suggestions mt-4">
+                <h6 class="text-muted mb-3">Sugestões de perguntas:</h6>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-outline-primary btn-sm suggestion-btn">O que é cidadania?</button>
+                    <button class="btn btn-outline-primary btn-sm suggestion-btn">Quais são os valores morais básicos?</button>
+                    <button class="btn btn-outline-primary btn-sm suggestion-btn">Como ser um bom cidadão?</button>
+                    <button class="btn btn-outline-primary btn-sm suggestion-btn">O que é ética?</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %} 

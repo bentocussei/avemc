@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %}AVEMC - Sobre Nós{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Seção Hero -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold mb-3">Sobre o AVEMC</h1>
+        <p class="lead text-muted">Assistente Virtual de Educação Moral e Cívica</p>
+    </div>
+
+    <!-- O que é -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <h2 class="mb-4">O que é o AVEMC?</h2>
+            <p class="lead">O AVEMC é um assistente virtual inteligente desenvolvido para auxiliar no ensino e aprendizagem de Educação Moral e Cívica.</p>
+            <p>Utilizando tecnologia de ponta em inteligência artificial, o AVEMC oferece uma experiência personalizada e interativa, ajudando estudantes a compreenderem melhor conceitos fundamentais de cidadania, ética e valores morais.</p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="{{ url_for('static', filename='img/about-illustration.png') }}" alt="AVEMC Ilustração" class="img-fluid rounded shadow-lg">
+        </div>
+    </div>
+
+    <!-- Missão e Visão -->
+    <div class="mission-vision p-5 rounded-3 mb-5">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title mb-3">
+                            <i class="bi bi-flag-fill text-primary me-2"></i>
+                            Nossa Missão
+                        </h3>
+                        <p class="card-text">Democratizar o acesso à educação moral e cívica através de tecnologia inovadora, promovendo a formação de cidadãos conscientes e éticos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title mb-3">
+                            <i class="bi bi-eye-fill text-primary me-2"></i>
+                            Nossa Visão
+                        </h3>
+                        <p class="card-text">Ser referência em educação digital, contribuindo para uma sociedade mais ética e consciente através da tecnologia e inovação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recursos -->
+    <div class="mb-5">
+        <h2 class="text-center mb-4">Nossos Recursos</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="bi bi-robot fs-4"></i>
+                        </div>
+                        <h4 class="fs-5 mb-3">Chat Inteligente</h4>
+                        <p class="text-muted mb-0">Interaja com um assistente virtual que aprende e se adapta às suas necessidades de aprendizado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="bi bi-journal-text fs-4"></i>
+                        </div>
+                        <h4 class="fs-5 mb-3">Conteúdo Personalizado</h4>
+                        <p class="text-muted mb-0">Material adaptado ao seu nível de conhecimento e ritmo de aprendizado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="bi bi-graph-up fs-4"></i>
+                        </div>
+                        <h4 class="fs-5 mb-3">Acompanhamento</h4>
+                        <p class="text-muted mb-0">Monitore seu progresso e revise seu histórico de aprendizado a qualquer momento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Nossa Equipe -->
+    <div class="text-center mb-5">
+        <h2 class="mb-4">Nossa Equipe</h2>
+        <p class="lead text-muted mb-5">Conheça os desenvolvedores por trás do AVEMC</p>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='img/team/member1.jpg') }}" alt="Membro da Equipe" class="mb-3 shadow">
+                    <h4 class="fs-5 mb-1">Benedito Zacarias</h4>
+                    <p class="text-muted mb-2">Desenvolvedor Full Stack</p>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-2"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='img/team/member2.jpg') }}" alt="Membro da Equipe" class="mb-3 shadow">
+                    <h4 class="fs-5 mb-1">Ana Silva</h4>
+                    <p class="text-muted mb-2">UX/UI Designer</p>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-2"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='img/team/member3.jpg') }}" alt="Membro da Equipe" class="mb-3 shadow">
+                    <h4 class="fs-5 mb-1">Carlos Santos</h4>
+                    <p class="text-muted mb-2">Backend Developer</p>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-2"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='img/team/member4.jpg') }}" alt="Membro da Equipe" class="mb-3 shadow">
+                    <h4 class="fs-5 mb-1">Diana Oliveira</h4>
+                    <p class="text-muted mb-2">AI Engineer</p>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-2"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='img/team/member5.jpg') }}" alt="Membro da Equipe" class="mb-3 shadow">
+                    <h4 class="fs-5 mb-1">Eduardo Costa</h4>
+                    <p class="text-muted mb-2">Frontend Developer</p>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-2"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='img/team/member6.jpg') }}" alt="Membro da Equipe" class="mb-3 shadow">
+                    <h4 class="fs-5 mb-1">Fernanda Lima</h4>
+                    <p class="text-muted mb-2">Quality Assurance</p>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-2"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contato -->
+    <div class="section-divider"></div>
+    
+    <div class="text-center mb-5">
+        <h2 class="mb-4">Entre em Contato</h2>
+        <p class="lead text-muted mb-4">Tem alguma dúvida ou sugestão? Ficaremos felizes em ajudar!</p>
+        <a href="mailto:contato@avemc.com" class="btn btn-primary btn-lg">
+            <i class="bi bi-envelope me-2"></i>
+            Enviar Email
+        </a>
+    </div>
+</div>
+{% endblock %} 

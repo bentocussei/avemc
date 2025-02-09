@@ -1,0 +1,122 @@
+.chat-messages {
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.message {
+    max-width: 85%;
+    margin-bottom: 1rem;
+}
+
+.message-content {
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+.user-message {
+    margin-left: auto;
+}
+
+.user-message .message-content {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Ajustes para modo escuro */
+[data-bs-theme="dark"] .bot-message .message-content {
+    background-color: var(--bs-dark);
+    border: 1px solid var(--bs-border-color);
+    color: var(--bs-body-color);
+}
+
+[data-bs-theme="light"] .bot-message .message-content {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.suggestion-btn {
+    transition: all 0.2s;
+}
+
+.suggestion-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Estilização da barra de rolagem */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: var(--bs-body-bg);
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: var(--bs-secondary);
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-secondary-dark);
+}
+
+/* Animação de digitação */
+.typing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+}
+
+.typing span {
+    width: 8px;
+    height: 8px;
+    background-color: var(--bs-secondary);
+    border-radius: 50%;
+    animation: typing 1s infinite ease-in-out;
+}
+
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Ajustes adicionais para modo escuro */
+[data-bs-theme="dark"] .card {
+    background-color: var(--bs-dark);
+}
+
+[data-bs-theme="dark"] .card-footer {
+    background-color: var(--bs-dark);
+    border-top-color: var(--bs-border-color);
+}
+
+[data-bs-theme="dark"] .form-control {
+    background-color: var(--bs-dark);
+    border-color: var(--bs-border-color);
+    color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+    background-color: var(--bs-dark);
+    color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .suggestion-btn {
+    border-color: var(--bs-border-color);
+}
+
+Ajustes para o card no modo claro
+.card {
+    border-left: 1px solid rgba(0, 0, 0, 0.125);
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+

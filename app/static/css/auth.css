@@ -1,0 +1,22 @@
+/* Estilos compartilhados entre login, forgot_password e change_password */
+.card {
+    border-radius: 15px;
+}
+
+.form-floating > .form-control {
+    border-radius: 10px;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+.auth-card {
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+[data-bs-theme="dark"] .auth-card {
+    background-color: var(--bs-dark);
+    border: 1px solid var(--bs-border-color);
+} 

@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}AVEMC - Configurações{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <!-- Menu lateral -->
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="list-group list-group-flush">
+                    <a href="#profile" class="list-group-item list-group-item-action active" data-bs-toggle="list">
+                        <i class="bi bi-person-circle me-2"></i> Perfil
+                    </a>
+                    <a href="#history" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                        <i class="bi bi-clock-history me-2"></i> Histórico
+                    </a>
+                    <a href="#change-password" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                        <i class="bi bi-key me-2"></i> Alterar Senha
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="col-md-9">
+            <div class="tab-content">
+                <!-- Perfil -->
+                <div class="tab-pane fade show active" id="profile">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="card-title mb-0">Informações do Perfil</h5>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ url_for('main.update_profile') }}">
+                                {{ form.csrf_token }}
+                                <div class="mb-3">
+                                    <label class="form-label">Nome</label>
+                                    {{ form.nome(class="form-control") }}
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    {{ form.email(class="form-control") }}
+                                </div>
+                                {{ form.submit(class="btn btn-primary") }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Histórico -->
+                <div class="tab-pane fade" id="history">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">Histórico de Conversas</h5>
+                            <button class="btn btn-light btn-sm" onclick="exportChat()">
+                                <i class="bi bi-download"></i> Exportar
+                            </button>
+                        </div>
+                        <div class="card-body chat-history">
+                            {% for date, messages in chat_history.items() %}
+                                <div class="conversation-group">
+                                    <div class="conversation-date">
+                                        <strong>{{ date }}</strong>
+                                    </div>
+                                    {% for message in messages %}
+                                        <div class="history-message {{ 'user-message' if not message.is_bot else 'bot-message' }} mt-3">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div class="message-content">{{ message.conteudo }}</div>
+                                                <span class="message-time ms-2">{{ message.timestamp.strftime('%H:%M') }}</span>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <div class="mb-4"></div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alterar Senha -->
+                <div class="tab-pane fade" id="change-password">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="card-title mb-0">Alterar Senha</h5>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ url_for('main.change_password') }}">
+                                {{ password_form.csrf_token }}
+                                <div class="mb-3">
+                                    <label class="form-label">Senha Atual</label>
+                                    {{ password_form.senha_atual(class="form-control") }}
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nova Senha</label>
+                                    {{ password_form.nova_senha(class="form-control") }}
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Confirmar Nova Senha</label>
+                                    {{ password_form.confirmar_senha(class="form-control") }}
+                                </div>
+                                {{ password_form.submit(class="btn btn-primary") }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %} 

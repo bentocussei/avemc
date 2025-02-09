@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Meu Site{% endblock %}</title>
+    {% block styles %}
+        {{ bootstrap.load_css() }}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">AVEMC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Menu principal à esquerda -->
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.home') }}">Home</a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.chat') }}">Chat</a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+                <!-- Menu do usuário à direita -->
+                <ul class="navbar-nav align-items-center">
+                    <!-- Botão de tema -->
+                    <li class="nav-item me-2">
+                        <div class="theme-toggle" id="theme-toggle" title="Alternar tema">
+                            <i class="bi bi-sun-fill" id="theme-icon"></i>
+                        </div>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle me-1"></i>
+                                {{ current_user.nome }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <span class="dropdown-item-text text-muted small">
+                                        <i class="bi bi-envelope"></i> {{ current_user.email }}
+                                    </span>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ url_for('main.settings') }}">
+                                        <i class="bi bi-gear"></i> Configurações
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ url_for('main.change_password') }}">
+                                        <i class="bi bi-key"></i> Alterar Senha
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item text-danger" href="{{ url_for('main.logout') }}">
+                                        <i class="bi bi-box-arrow-right"></i> Sair
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.login') }}">
+                                <i class="bi bi-box-arrow-in-right"></i> Login
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block scripts %}
+        {{ bootstrap.load_js() }}
+        <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    {% endblock %}
+</body>
+</html>

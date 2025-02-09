@@ -1,0 +1,20 @@
+.nav-pills .nav-link {
+    border-radius: 20px;
+    padding: 10px 30px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--bs-primary);
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.form-floating > .form-control {
+    border-radius: 10px;
+}
+
+.btn {
+    border-radius: 10px;
+} 

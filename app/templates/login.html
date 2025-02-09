@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %}Login - EduBot{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 76px);">
+    <div class="row justify-content-center w-100">
+        <div class="col-md-6 col-lg-5">
+            <div class="card border-0 shadow-lg">
+                <!-- Abas de Login/Cadastro -->
+                <ul class="nav nav-pills nav-fill mb-3 p-3" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#login-tab" type="button">Login</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#registro-tab" type="button">Cadastro</button>
+                    </li>
+                </ul>
+
+                <div class="card-body p-4 p-md-5">
+                    <div class="tab-content">
+                        <!-- Formulário de Login -->
+                        <div class="tab-pane fade show active" id="login-tab">
+                            <h3 class="mb-4 text-center">Bem-vindo de volta!</h3>
+                            <form method="POST" action="{{ url_for('main.login') }}">
+                                {{ login_form.csrf_token }}
+                                <div class="form-floating mb-3">
+                                    {{ login_form.email(class="form-control", placeholder="nome@exemplo.com") }}
+                                    <label for="email">E-mail</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    {{ login_form.senha(class="form-control", placeholder="Senha") }}
+                                    <label for="senha">Senha</label>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <div class="form-check">
+                                        {{ login_form.lembrar(class="form-check-input") }}
+                                        <label class="form-check-label" for="lembrar">Lembrar-me</label>
+                                    </div>
+                                    <a href="{{ url_for('main.forgot_password') }}" class="text-primary text-decoration-none">Esqueceu a senha?</a>
+                                </div>
+                                <div class="d-grid">
+                                    {{ login_form.submit(class="btn btn-primary btn-lg") }}
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Formulário de Cadastro -->
+                        <div class="tab-pane fade" id="registro-tab">
+                            <h3 class="mb-4 text-center">Criar uma conta</h3>
+                            <form method="POST" action="{{ url_for('main.cadastro') }}">
+                                {{ registro_form.csrf_token }}
+                                <div class="form-floating mb-3">
+                                    {{ registro_form.nome(class="form-control", placeholder="Seu nome") }}
+                                    <label for="nome">Nome completo</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    {{ registro_form.email(class="form-control", placeholder="nome@exemplo.com") }}
+                                    <label for="email">E-mail</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    {{ registro_form.senha(class="form-control", placeholder="Senha") }}
+                                    <label for="senha">Senha</label>
+                                </div>
+                                <div class="form-floating mb-4">
+                                    {{ registro_form.confirmar_senha(class="form-control", placeholder="Confirmar senha") }}
+                                    <label for="confirmar_senha">Confirmar senha</label>
+                                </div>
+                                <div class="d-grid">
+                                    {{ registro_form.submit(class="btn btn-primary btn-lg") }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
